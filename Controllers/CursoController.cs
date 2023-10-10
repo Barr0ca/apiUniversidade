@@ -4,18 +4,19 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using apiUniversidade.Model;
+using apiUniversidade.Context;
 
 namespace apiUniversidade.Controllers;
 
 [ApiController]
 [Route("[controller]")]
 
-public class CursosController : ControllerBase
+public class CursoController : ControllerBase
 {
     private readonly ILogger<CursoController> _logger;
-    private readonly apiUniversidadeContext _context;
+    private readonly ApiUniversidadeContext _context;
 
-    public CursosController{ILogger<CursosController> logger, ApiUniversidadeContext context}
+    public CursoController(ILogger<CursoController> logger, ApiUniversidadeContext context)
     {
         _logger = logger;
         _context = context;
