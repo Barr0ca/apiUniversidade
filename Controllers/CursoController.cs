@@ -31,4 +31,14 @@ public class CursoController : ControllerBase
         
         return cursos;
     }
+
+    [HttpPost]
+    public ActionResult Post(Curso cursos){
+        _context.Cursos.Add(cursos);
+        _context.SaveChanges();
+        
+        return new CreatedAtRouteResult("GetCurso",
+            new{id = cursos.Id},
+            cursos);
+    }
 }
