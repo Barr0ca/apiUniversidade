@@ -41,4 +41,14 @@ public class CursoController : ControllerBase
             new{id = cursos.Id},
             cursos);
     }
+
+    [HttpGet("{id:int}", Name="GetCurso")]
+    public ActionResult<Curso> Get(int id)
+    {
+        var cursos = _context.Cursos.FirstOrDefault(p => p.Id == id);
+        if(cursos is null)
+            return NotFound("Curso não encontrado.");
+
+        return cursos;
+    }
 }
