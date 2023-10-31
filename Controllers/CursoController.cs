@@ -34,7 +34,8 @@ public class CursoController : ControllerBase
     }
 
     [HttpPost]
-    public ActionResult Post(Curso cursos){
+    public ActionResult Post(Curso cursos)
+    {
         _context.Cursos.Add(cursos);
         _context.SaveChanges();
         
@@ -54,11 +55,26 @@ public class CursoController : ControllerBase
     }
 
     [HttpPut("{id:int}")]
-    public ActionResult Put(int id, Curso cursos){
+    public ActionResult Put(int id, Curso cursos)
+    {
         if(id != cursos.Id)
             return BadRequest();
 
         _context.Entry(cursos).State = EntityState.Modified;
+        _context.SaveChanges();
+
+        return Ok(cursos);
+    }
+
+    [HttpDelete("{id:int}")]
+    public ActionResult Delete(int id)
+    {
+        var cursos = _context.Cursos.FirstOrDefault(p => p.Id == id);
+
+        if (cursos is null)
+            return NotFound();
+
+        _context.Cursos.Remove(cursos);
         _context.SaveChanges();
 
         return Ok(cursos);
