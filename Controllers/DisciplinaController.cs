@@ -39,7 +39,7 @@ public class DisciplinaController : ControllerBase
         _context.Disciplinas.Add(disciplinas);
         _context.SaveChanges();
         
-        return new CreatedAtRouteResult("GetCurso",
+        return new CreatedAtRouteResult("GetDisciplina",
             new{id = disciplinas.Id},
             disciplinas);
     }
