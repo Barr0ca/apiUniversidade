@@ -23,7 +23,7 @@ public class DisciplinaController : ControllerBase
         _context = context;
     }
 
-    [HttpGet]
+    [HttpGet(Name = "GetDisciplina")]
     public ActionResult<IEnumerable<Disciplina>> Get()
     {
         var disciplinas = _context.Disciplinas.ToList();
