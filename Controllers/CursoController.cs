@@ -27,12 +27,12 @@ public class CursoController : ControllerBase
         _context = context;
     }  
 
-    [HttpGet(Name="GetExemplo")]
-    [Route("exemplo")]
-    public String GetExemplo()
-    {
-        return "Api v1";
-    }
+    // [HttpGet(Name="GetExemplo")]
+    // [Route("exemplo")]
+    // public String GetExemplo()
+    // {
+    //     return "Api v1";
+    // }
 
     [HttpGet]
     public ActionResult<IEnumerable<Curso>> Get()
